@@ -35,14 +35,18 @@ src/
   Root.tsx            registers every video as a <Composition>
   theme.ts            colors, spacing, springs, helpers
   fonts.ts            font loading
-  components/         shared components (TitleCard, LayerIcon, VennDiagram, LayerStack, PhoneMock, ReasonCard, Captions)
+  components/         shared components (TitleCard, LayerIcon, VennDiagram, LayerStack, PhoneMock, ReasonCard, Captions, Backdrop)
+                      animate.ts holds the shared popIn / fadeUp / slideIn / typedLength helpers
   videos/<videoN>/    SceneN.tsx files + the main <VideoN /> composition
+  videos/dev/         ComponentReel: every shared component on one timeline. Dev tool, never uploaded.
 public/<videoN>/      per-video assets (voiceover, footage, images)
-public/brand/         logo and banner
+public/brand/         logo and banner (logo-mark.png, logo-banner.png)
 docs/<videoN>-script.md   script and animation flow (read before building a scene)
 ```
 - Never copy a shared component into a video folder. Import it from `src/components`.
 - Put new videos in `src/videos/videoN/` and register them in `src/Root.tsx`.
+- Use `animate.ts` helpers instead of re-writing spring calls. They take `frame`/`fps`
+  so they can be called inside `.map()` for staggered items.
 
 ## Remotion rules
 - Animate ONLY with `useCurrentFrame()`, `interpolate()` and `spring()`. No CSS transitions or CSS animations, no `setTimeout`, no `Math.random()` (use `random("seed")` from remotion).
@@ -57,6 +61,9 @@ docs/<videoN>-script.md   script and animation flow (read before building a scen
 - After changes, run the type check and lint (see `package.json` scripts).
 - Preview with Remotion Studio (`pnpm dev`). Do not render a full video unless asked.
   Draft render: `pnpm exec remotion render <CompositionId> out/draft.mp4 --scale=0.5`
+- Check shared components in the `ComponentReel` composition, not in a scene.
+- If a render dies with `Protocol error (Target.createTarget): Target closed`, the bundled
+  headless shell is crashing. Add `--chrome-mode=chrome-for-testing` to the command.
 - Commit after each finished scene with a clear message.
 - Ask before adding a new dependency. This project uses pnpm.
 - Be honest in explanations: this channel says openly when AI helped make a video.
