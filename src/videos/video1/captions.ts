@@ -2,7 +2,8 @@ import { CaptionLine } from "../../components/Captions";
 import { colors, layerColors, sec } from "../../theme";
 
 // Captions for Video 1, in Video1 (global) frames. One short line at a time.
-// Provisional: retime each line to the real voiceover. Scene starts, in
+// The overlap scene (17s to 37s) has no captions: its statements are
+// on-screen text. Provisional: retime each line to the real voiceover. Scene starts, in
 // seconds: hook 0, three 5, overlap 17, proof 37, outro 50.
 const HW = layerColors.hardware;
 const SW = layerColors.software;
@@ -43,29 +44,6 @@ export const VIDEO1_CAPTIONS: CaptionLine[] = [
     { text: "AI", color: AI },
     { text: ": software that learns from data." },
   ]),
-  line(18.5, 22.3, [
-    { text: "AI", color: AI },
-    { text: " is " },
-    { text: "software", color: SW },
-    { text: "." },
-  ]),
-  line(22.5, 26.3, [
-    { text: "Software", color: SW },
-    { text: " runs on " },
-    { text: "hardware", color: HW },
-    { text: "." },
-  ]),
-  line(26.5, 30.3, [
-    { text: "Hardware", color: HW },
-    { text: " is built for " },
-    { text: "AI", color: AI },
-    { text: "." },
-  ]),
-  line(30.5, 36.5, [
-    { text: "Put them together, and that's " },
-    { text: "engineering", color: EN },
-    { text: "." },
-  ]),
   line(38, 41, [
     { text: "The animations are " },
     { text: "code", color: SW },
@@ -80,11 +58,11 @@ export const VIDEO1_CAPTIONS: CaptionLine[] = [
     { text: "device", color: HW },
     { text: "." },
   ]),
-  line(50.3, 53.8, [
-    { text: "What would we build with " },
+  line(50.3, 53.3, [{ text: "That's why I like them." }]),
+  line(53.5, 57, [
+    { text: "I love building things with " },
     { text: "all three", color: EN },
-    { text: "?" },
+    { text: "." },
   ]),
-  line(54, 57.8, [{ text: "Let's find out together." }]),
-  line(58, 59.8, [{ text: "Subscribe to learn with me." }]),
+  line(57.2, 59.8, [{ text: "Follow my journey. Hit Subscribe." }]),
 ];
