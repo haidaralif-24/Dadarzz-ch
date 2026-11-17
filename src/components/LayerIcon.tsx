@@ -88,7 +88,7 @@ export const LayerIcon: React.FC<Props> = ({
   const pop = spring({
     frame: frame - delay,
     fps,
-    config: springs.pop,
+    config: springs.smooth,
     durationInFrames: 20,
   });
 
@@ -99,7 +99,7 @@ export const LayerIcon: React.FC<Props> = ({
         flexDirection: "column",
         alignItems: "center",
         gap: spacing.gap / 2,
-        scale: interpolate(pop, [0, 1], [0.6, 1]),
+        scale: interpolate(pop, [0, 1], [0.94, 1]),
         opacity: interpolate(pop, [0, 1], [0, 1], {
           extrapolateRight: "clamp",
         }),

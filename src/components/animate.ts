@@ -6,11 +6,18 @@ import { springs } from "../theme";
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
-// Spring pop-in: scale up from `from` and fade in over the first few frames.
-export const popIn = (frame: number, fps: number, delay = 0, from = 0.84) => {
+// Calm pop-in: a gentle fade with a tiny scale-up, no bounce. `from` is only
+// honoured down to 0.94 so nothing ever "pops".
+export const popIn = (frame: number, fps: number, delay = 0, from = 0.94) => {
   const local = Math.max(0, frame - delay);
-  const scale = spring({ frame: local, fps, config: springs.pop, from, to: 1 });
-  const opacity = interpolate(local, [0, 7], [0, 1], clamp);
+  const scale = spring({
+    frame: local,
+    fps,
+    config: springs.smooth,
+    from: Math.max(from, 0.94),
+    to: 1,
+  });
+  const opacity = interpolate(local, [0, 10], [0, 1], clamp);
   return { scale, opacity };
 };
 

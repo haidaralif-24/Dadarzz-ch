@@ -9,6 +9,9 @@ import { colors, crt, withAlpha } from "../theme";
 export const CrtScreen: React.FC<{ children?: React.ReactNode }> = ({
   children,
 }) => {
+  if (!crt.enabled) {
+    return <AbsoluteFill>{children}</AbsoluteFill>;
+  }
   const line = withAlpha("#000000", crt.scanlineAlpha);
   return (
     <AbsoluteFill style={{ backgroundColor: colors.bgDeep }}>

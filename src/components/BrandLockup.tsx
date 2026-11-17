@@ -1,7 +1,7 @@
 import React from "react";
 import { Img, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { fonts } from "../fonts";
-import { colors, spacing, withAlpha } from "../theme";
+import { colors, spacing } from "../theme";
 import { fadeUp, popIn, typedLength } from "./animate";
 
 // The channel logo lockup: pixel "D" mark, DARZ BITS wordmark, and the tagline
@@ -80,15 +80,7 @@ export const BrandLockup: React.FC<Props> = ({
             translate: `0 ${word.translateY}px`,
           }}
         >
-          DARZ{" "}
-          <span
-            style={{
-              color: colors.brand,
-              textShadow: `0 0 ${wordSize * 0.35}px ${withAlpha(colors.brand, 0.5)}`,
-            }}
-          >
-            BITS
-          </span>
+          DARZ <span style={{ color: colors.brand }}>BITS</span>
         </div>
         <div
           style={{

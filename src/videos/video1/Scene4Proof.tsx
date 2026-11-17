@@ -1,17 +1,12 @@
 import React from "react";
-import {
-  AbsoluteFill,
-  interpolate,
-  useCurrentFrame,
-  useVideoConfig,
-} from "remotion";
+import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
 import { fadeUp } from "../../components/animate";
 import { Backdrop } from "../../components/Backdrop";
 import { LayerStack } from "../../components/LayerStack";
 import { PhoneMock } from "../../components/PhoneMock";
 import { PhoneScreen } from "./PhoneScreen";
 import { fonts } from "../../fonts";
-import { colors, layerColors, sec, spacing } from "../../theme";
+import { colors, sec, spacing } from "../../theme";
 
 // Scene 4: The proof (0:37 to 0:50). See docs/video1-script.md.
 // A device stands in for the viewer's own screen. The stack builds line by
@@ -19,17 +14,12 @@ import { colors, layerColors, sec, spacing } from "../../theme";
 // code), hardware (it plays on your device). Provisional timing.
 const STACK_AT = sec(1);
 const STACK_STAGGER = sec(3);
-const HARDWARE_AT = STACK_AT + STACK_STAGGER * 2;
 const FINAL_AT = sec(10);
 
 export const Scene4Proof: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const glow = interpolate(frame, [HARDWARE_AT, HARDWARE_AT + 24], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
   const final = fadeUp(frame, fps, FINAL_AT);
 
   return (
@@ -43,17 +33,8 @@ export const Scene4Proof: React.FC = () => {
           paddingBottom: 120,
         }}
       >
-        <PhoneMock
-          delay={0}
-          width={400}
-          glow={glow}
-          glowColor={layerColors.hardware}
-        >
-          <PhoneScreen
-            softwareAt={STACK_AT}
-            aiAt={STACK_AT + STACK_STAGGER}
-            hardwareAt={HARDWARE_AT}
-          />
+        <PhoneMock delay={0} width={400}>
+          <PhoneScreen softwareAt={STACK_AT} />
         </PhoneMock>
         <LayerStack
           order={["software", "ai", "hardware"]}

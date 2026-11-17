@@ -143,7 +143,6 @@ export const VennDiagram: React.FC<VennDiagramProps> = ({
             fontSize: 48,
             letterSpacing: "-0.01em",
             color: colors.brand,
-            textShadow: `0 0 44px ${withAlpha(colors.brand, 0.6)}`,
             whiteSpace: "nowrap",
           }}
         >

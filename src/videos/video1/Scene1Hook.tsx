@@ -9,68 +9,27 @@ import {
 import { Backdrop } from "../../components/Backdrop";
 import { LayerIcon } from "../../components/LayerIcon";
 import { fonts } from "../../fonts";
-import {
-  Layer,
-  colors,
-  layerColors,
-  sec,
-  springs,
-  withAlpha,
-} from "../../theme";
+import { Layer, colors, sec, springs } from "../../theme";
 
 // Scene 1: Hook (about 5s). See docs/video1-script.md.
-// Beats (provisional, retime to the voiceover):
-//   0.3s "hardware"  -> chip pops in
-//   0.9s "software"  -> code window pops in
-//   1.5s "AI"        -> AI sparkle pops in
-//   2.5s merge into one row -> the three slide into one glowing row
-//   3.3s "All at once."
+// Plain version: the three icons appear in place, one on each spoken word,
+// then the line "All at once." Provisional timing; retime to the voiceover.
+//   0.3s "hardware"   0.9s "software"   1.5s "AI"   3.3s "All at once."
 const ICON = 200;
 const ROW_GAP = 440;
-
-type Item = {
-  layer: Layer;
-  popAt: number;
-  // Where it first appears, relative to the screen centre.
-  from: { x: number; y: number };
-  // Where it ends up in the row.
-  to: { x: number; y: number };
-};
-
-const ITEMS: Item[] = [
-  {
-    layer: "hardware",
-    popAt: sec(0.3),
-    from: { x: -520, y: -150 },
-    to: { x: -ROW_GAP, y: -70 },
-  },
-  {
-    layer: "software",
-    popAt: sec(0.9),
-    from: { x: 460, y: 90 },
-    to: { x: 0, y: -70 },
-  },
-  {
-    layer: "ai",
-    popAt: sec(1.5),
-    from: { x: -60, y: 230 },
-    to: { x: ROW_GAP, y: -70 },
-  },
-];
-
-const MERGE_AT = sec(2.5);
+const ROW_Y = -70;
 const TEXT_AT = sec(3.3);
+
+const ITEMS: { layer: Layer; popAt: number; x: number }[] = [
+  { layer: "hardware", popAt: sec(0.3), x: -ROW_GAP },
+  { layer: "software", popAt: sec(0.9), x: 0 },
+  { layer: "ai", popAt: sec(1.5), x: ROW_GAP },
+];
 
 export const Scene1Hook: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const merge = spring({
-    frame: frame - MERGE_AT,
-    fps,
-    config: springs.smooth,
-    durationInFrames: 20,
-  });
   const text = spring({
     frame: frame - TEXT_AT,
     fps,
@@ -80,38 +39,15 @@ export const Scene1Hook: React.FC = () => {
 
   return (
     <Backdrop>
-      {/* Warm glow behind the row once the three are together. */}
-      <AbsoluteFill
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          opacity: merge,
-        }}
-      >
-        <div
-          style={{
-            width: 1500,
-            height: 360,
-            translate: "0 -70px",
-            borderRadius: 180,
-            background: `radial-gradient(closest-side, ${withAlpha(colors.engineering, 0.28)}, ${withAlpha(colors.engineering, 0)})`,
-          }}
-        />
-      </AbsoluteFill>
-
       {ITEMS.map((item) => (
         <AbsoluteFill
           key={item.layer}
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-          }}
+          style={{ justifyContent: "center", alignItems: "center" }}
         >
           <div
             style={{
-              translate: `${interpolate(merge, [0, 1], [item.from.x, item.to.x])}px ${interpolate(merge, [0, 1], [item.from.y, item.to.y])}px`,
+              translate: `${item.x}px ${ROW_Y}px`,
               opacity: frame >= item.popAt ? 1 : 0,
-              filter: `drop-shadow(0 0 ${interpolate(merge, [0, 1], [0, 28])}px ${withAlpha(layerColors[item.layer], 0.6)})`,
             }}
           >
             <LayerIcon layer={item.layer} size={ICON} delay={item.popAt} />
@@ -119,12 +55,7 @@ export const Scene1Hook: React.FC = () => {
         </AbsoluteFill>
       ))}
 
-      <AbsoluteFill
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <AbsoluteFill style={{ justifyContent: "center", alignItems: "center" }}>
         <div
           style={{
             translate: `0 ${interpolate(text, [0, 1], [310, 290])}px`,
