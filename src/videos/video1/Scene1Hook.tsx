@@ -18,13 +18,13 @@ import {
   withAlpha,
 } from "../../theme";
 
-// Scene 1: Hook (about 10s). See docs/video1-script.md.
+// Scene 1: Hook (about 5s). See docs/video1-script.md.
 // Beats (provisional, retime to the voiceover):
-//   1.5s "hardware"  -> chip pops in
-//   2.3s "software"  -> code window pops in
-//   3.1s "AI"        -> AI sparkle pops in
-//   5.0s "all working together" -> the three slide into one glowing row
-//   7.5s "Let's figure it out."
+//   0.3s "hardware"  -> chip pops in
+//   0.9s "software"  -> code window pops in
+//   1.5s "AI"        -> AI sparkle pops in
+//   2.5s merge into one row -> the three slide into one glowing row
+//   3.3s "All at once."
 const ICON = 200;
 const ROW_GAP = 440;
 
@@ -40,26 +40,26 @@ type Item = {
 const ITEMS: Item[] = [
   {
     layer: "hardware",
-    popAt: sec(1.5),
+    popAt: sec(0.3),
     from: { x: -520, y: -150 },
     to: { x: -ROW_GAP, y: -70 },
   },
   {
     layer: "software",
-    popAt: sec(2.3),
+    popAt: sec(0.9),
     from: { x: 460, y: 90 },
     to: { x: 0, y: -70 },
   },
   {
     layer: "ai",
-    popAt: sec(3.1),
+    popAt: sec(1.5),
     from: { x: -60, y: 230 },
     to: { x: ROW_GAP, y: -70 },
   },
 ];
 
-const MERGE_AT = sec(5);
-const TEXT_AT = sec(7.5);
+const MERGE_AT = sec(2.5);
+const TEXT_AT = sec(3.3);
 
 export const Scene1Hook: React.FC = () => {
   const frame = useCurrentFrame();
@@ -135,7 +135,7 @@ export const Scene1Hook: React.FC = () => {
             color: colors.white,
           }}
         >
-          Let&apos;s figure it out.
+          All at once.
         </div>
       </AbsoluteFill>
     </Backdrop>

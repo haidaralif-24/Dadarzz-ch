@@ -12,16 +12,16 @@ import { PhoneMock } from "../../components/PhoneMock";
 import { fonts } from "../../fonts";
 import { colors, layerColors, sec, spacing } from "../../theme";
 
-// Scene 5: The proof, this video itself (3:40 to 5:30). See docs/video1-script.md.
+// Scene 4: The proof (0:37 to 0:50). See docs/video1-script.md.
 // A device stands in for the viewer's own screen. The stack builds line by
 // line on the spoken beats: software (animations are code), AI (generated the
 // code), hardware (it plays on your device). Provisional timing.
-const STACK_AT = sec(3);
-const STACK_STAGGER = sec(4);
+const STACK_AT = sec(1);
+const STACK_STAGGER = sec(3);
 const HARDWARE_AT = STACK_AT + STACK_STAGGER * 2;
-const FINAL_AT = sec(14.5);
+const FINAL_AT = sec(10);
 
-export const Scene5Proof: React.FC = () => {
+export const Scene4Proof: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -43,7 +43,7 @@ export const Scene5Proof: React.FC = () => {
         }}
       >
         <PhoneMock
-          delay={sec(0.5)}
+          delay={0}
           width={400}
           glow={glow}
           glowColor={layerColors.hardware}

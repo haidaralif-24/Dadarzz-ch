@@ -1,43 +1,32 @@
 import React from "react";
 import { Series } from "remotion";
 import { Scene1Hook } from "./Scene1Hook";
-import { Scene2Intro } from "./Scene2Intro";
-import { Scene3Definitions } from "./Scene3Definitions";
-import { Scene4Overlap } from "./Scene4Overlap";
-import { Scene5Proof } from "./Scene5Proof";
-import { Scene6Why } from "./Scene6Why";
-import { Scene7Outro } from "./Scene7Outro";
+import { Scene2Three } from "./Scene2Three";
+import { Scene3Overlap } from "./Scene3Overlap";
+import { Scene4Proof } from "./Scene4Proof";
+import { Scene5Outro } from "./Scene5Outro";
 import { SCENE_FRAMES } from "./timing";
 
-// Main composition for Video 1. Scenes are added one at a time from
-// docs/video1-script.md; each is its own <Series.Sequence> so it can be
-// edited and previewed separately.
+// Main composition for Video 1: a 60-second explainer.
+// Each scene is its own <Series.Sequence> so it can be edited and previewed
+// separately. Script: docs/video1-script.md.
 export const Video1: React.FC = () => {
   return (
     <Series>
       <Series.Sequence durationInFrames={SCENE_FRAMES.hook} name="1 Hook">
         <Scene1Hook />
       </Series.Sequence>
-      <Series.Sequence durationInFrames={SCENE_FRAMES.intro} name="2 Intro">
-        <Scene2Intro />
+      <Series.Sequence durationInFrames={SCENE_FRAMES.three} name="2 The three">
+        <Scene2Three />
       </Series.Sequence>
-      <Series.Sequence
-        durationInFrames={SCENE_FRAMES.definitions}
-        name="3 Definitions"
-      >
-        <Scene3Definitions />
+      <Series.Sequence durationInFrames={SCENE_FRAMES.overlap} name="3 Overlap">
+        <Scene3Overlap />
       </Series.Sequence>
-      <Series.Sequence durationInFrames={SCENE_FRAMES.overlap} name="4 Overlap">
-        <Scene4Overlap />
+      <Series.Sequence durationInFrames={SCENE_FRAMES.proof} name="4 Proof">
+        <Scene4Proof />
       </Series.Sequence>
-      <Series.Sequence durationInFrames={SCENE_FRAMES.proof} name="5 Proof">
-        <Scene5Proof />
-      </Series.Sequence>
-      <Series.Sequence durationInFrames={SCENE_FRAMES.why} name="6 Why">
-        <Scene6Why />
-      </Series.Sequence>
-      <Series.Sequence durationInFrames={SCENE_FRAMES.outro} name="7 Outro">
-        <Scene7Outro />
+      <Series.Sequence durationInFrames={SCENE_FRAMES.outro} name="5 Outro">
+        <Scene5Outro />
       </Series.Sequence>
     </Series>
   );

@@ -12,13 +12,13 @@ import { VennDiagram } from "../../components/VennDiagram";
 import { fonts } from "../../fonts";
 import { colors, layerColors, sec, spacing } from "../../theme";
 
-// Scene 4: How they overlap (1:40 to 3:40). See docs/video1-script.md.
+// Scene 3: How they connect (0:17 to 0:37). See docs/video1-script.md.
 // The Venn diagram builds first, then one statement at a time appears beside
 // it. The centre lights up with "Engineering" at the end.
 // Timings are provisional; retime to the voiceover.
-const STATEMENT_LEN = sec(6);
-const FIRST_AT = sec(5);
-const CENTER_AT = sec(29);
+const STATEMENT_LEN = sec(4);
+const FIRST_AT = sec(1.5);
+const CENTER_AT = sec(13.5);
 
 type Word = { text: string; color?: string };
 
@@ -38,7 +38,6 @@ const STATEMENTS: Word[][] = [
     { text: " is built for " },
     { ...AI, text: "AI." },
   ],
-  [{ text: "They depend on each other." }],
 ];
 
 const Statement: React.FC<{ words: Word[]; last?: boolean }> = ({
@@ -76,7 +75,7 @@ const Statement: React.FC<{ words: Word[]; last?: boolean }> = ({
   );
 };
 
-export const Scene4Overlap: React.FC = () => {
+export const Scene3Overlap: React.FC = () => {
   return (
     <Backdrop>
       <AbsoluteFill
@@ -88,7 +87,7 @@ export const Scene4Overlap: React.FC = () => {
         }}
       >
         <div style={{ flexShrink: 0 }}>
-          <VennDiagram size={800} delay={sec(1)} centerDelay={CENTER_AT} />
+          <VennDiagram size={800} delay={sec(0.3)} centerDelay={CENTER_AT} />
         </div>
         <div style={{ position: "relative", flex: 1, height: 400 }}>
           <AbsoluteFill style={{ justifyContent: "center" }}>
@@ -106,7 +105,7 @@ export const Scene4Overlap: React.FC = () => {
               </Sequence>
             ))}
             <Sequence
-              from={CENTER_AT + sec(2)}
+              from={CENTER_AT + sec(1.5)}
               layout="none"
               name="Layers of one system"
             >
@@ -114,7 +113,7 @@ export const Scene4Overlap: React.FC = () => {
                 <Statement
                   last
                   words={[
-                    { text: "Layers of one system: " },
+                    { text: "Together: " },
                     { text: "engineering.", color: layerColors.engineering },
                   ]}
                 />
