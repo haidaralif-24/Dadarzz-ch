@@ -20,7 +20,9 @@ One Remotion project for ALL videos. Each video is one `<Composition>` in `src/R
 - Logo: pixel-art half "D" filled with binary digits, gold and orange, on charcoal. Wordmark = "DARZ" in white
   + "BITS" in gold, tagline underneath in muted mono after a `>` prompt, with a gold block cursor.
   Keep clear space around it. Do not recolor, distort or re-draw it: use `public/brand/logo-mark.png`.
-- Look: retro terminal. Faint scanlines, a dark vignette and dim binary strings in the corners (see `Backdrop`).
+- Look: old CRT PC, like the banner. Dimmed, slightly washed-out colors and scanlines over EVERYTHING (see
+  `CrtScreen`, tuned by `crt` in `theme.ts`), plus a dark vignette and dim binary strings (see `Backdrop`).
+  Wrap each video in `<CrtScreen>`. Do not use pure white or fully saturated colors outside the theme tokens.
 - Layer colors are fixed meanings, use them the same way in every video:
   - Hardware = teal (`colors.hardware`)
   - Software = blue (`colors.software`)

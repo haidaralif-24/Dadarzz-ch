@@ -3,6 +3,7 @@ import { AbsoluteFill, interpolate, Sequence, useCurrentFrame } from "remotion";
 import { Backdrop } from "../../components/Backdrop";
 import { BrandLockup } from "../../components/BrandLockup";
 import { Captions } from "../../components/Captions";
+import { CrtScreen } from "../../components/CrtScreen";
 import { LayerIcon } from "../../components/LayerIcon";
 import { LayerStack } from "../../components/LayerStack";
 import { PhoneMock } from "../../components/PhoneMock";
@@ -70,7 +71,7 @@ export const REEL_DURATION = PANEL * 8;
 
 export const ComponentReel: React.FC = () => {
   return (
-    <>
+    <CrtScreen>
       <Sequence from={PANEL * 0} durationInFrames={PANEL} name="TitleCard">
         <Panel index={1} name="TitleCard">
           <TitleCard
@@ -145,6 +146,6 @@ export const ComponentReel: React.FC = () => {
           <BrandLockup size={300} />
         </Panel>
       </Sequence>
-    </>
+    </CrtScreen>
   );
 };

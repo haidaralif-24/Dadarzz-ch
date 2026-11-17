@@ -9,8 +9,8 @@ export const colors = {
   bgRaised: "#232328", // cards, panels, code windows
   brand: "#FFC93C", // brand gold: "BITS", the cursor, the pixel "D" highlight
   accent: "#F28C28", // orange from the pixel "D" frame
-  white: "#FFFFFF", // main text
-  muted: "#9B9BA2", // tagline / secondary text
+  white: "#F5F5F7", // main text (banner text is off-white, not pure white)
+  muted: "#B4B4BB", // tagline / secondary text
 
   // The three layers (used consistently in every video)
   hardware: "#2DD4A7", // teal
@@ -18,6 +18,14 @@ export const colors = {
   ai: "#A78BFA", // violet
   // Where all three meet, use the brand gold: that's "Engineering".
   engineering: "#FFC93C",
+} as const;
+
+// Old-PC (CRT) screen look, applied over the whole video by <CrtScreen />.
+// Tune these three numbers to make the picture dimmer or brighter.
+export const crt = {
+  saturate: 0.82, // 1 = unchanged, lower = more washed out
+  brightness: 0.88, // 1 = unchanged, lower = dimmer
+  scanlineAlpha: 0.24, // darkness of the horizontal scanlines (banner is about 0.22)
 } as const;
 
 export const layerColors = {

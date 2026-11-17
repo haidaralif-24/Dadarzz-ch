@@ -4,12 +4,13 @@ import { fonts } from "../fonts";
 import { colors, withAlpha } from "../theme";
 
 // Every scene sits on this retro-terminal backdrop: charcoal with a dark
-// vignette, faint scanlines and dim binary strings in two corners (the same
+// vignette and dim binary strings in two corners (the same
 // look as the channel banner). Wrap scene content in this so the background is
-// defined in exactly one place. Everything here is static.
+// defined in exactly one place. The CRT scanlines and dimming come from <CrtScreen />, which wraps the whole video.
+// Everything here is static.
 type Props = {
   children?: React.ReactNode;
-  /** Turn off the scanlines and binary strings, e.g. for a clean screenshot. */
+  /** Turn off the binary strings, e.g. for a clean screenshot. */
   plain?: boolean;
 };
 
@@ -32,11 +33,6 @@ export const Backdrop: React.FC<Props> = ({ children, plain = false }) => {
     >
       {plain ? null : (
         <>
-          <AbsoluteFill
-            style={{
-              backgroundImage: `repeating-linear-gradient(0deg, ${withAlpha("#000000", 0.14)} 0px, ${withAlpha("#000000", 0.14)} 1px, transparent 1px, transparent 4px)`,
-            }}
-          />
           <div style={{ ...binary, left: 48, top: 36 }}>
             01001000 01101001 10110010 01101101
           </div>

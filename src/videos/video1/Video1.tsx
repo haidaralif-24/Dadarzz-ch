@@ -1,6 +1,7 @@
 import React from "react";
 import { Series } from "remotion";
 import { Captions } from "../../components/Captions";
+import { CrtScreen } from "../../components/CrtScreen";
 import { VIDEO1_CAPTIONS } from "./captions";
 import { Scene1Hook } from "./Scene1Hook";
 import { Scene2Three } from "./Scene2Three";
@@ -16,7 +17,7 @@ export type Video1Props = { captions: boolean };
 
 export const Video1: React.FC<Video1Props> = ({ captions }) => {
   return (
-    <>
+    <CrtScreen>
       <Series>
         <Series.Sequence durationInFrames={SCENE_FRAMES.hook} name="1 Hook">
           <Scene1Hook />
@@ -41,6 +42,6 @@ export const Video1: React.FC<Video1Props> = ({ captions }) => {
         </Series.Sequence>
       </Series>
       {captions ? <Captions lines={VIDEO1_CAPTIONS} bottom={48} /> : null}
-    </>
+    </CrtScreen>
   );
 };
