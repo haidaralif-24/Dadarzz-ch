@@ -78,7 +78,7 @@ export const Scene4Proof: React.FC = () => {
           style={{
             fontFamily: fonts.heading,
             fontWeight: 700,
-            fontSize: 64,
+            fontSize: 56,
             color: colors.white,
             opacity: final.opacity,
             translate: `0 ${final.translateY}px`,

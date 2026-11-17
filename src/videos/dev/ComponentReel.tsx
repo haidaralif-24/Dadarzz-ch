@@ -1,6 +1,7 @@
 import React from "react";
 import { AbsoluteFill, interpolate, Sequence, useCurrentFrame } from "remotion";
 import { Backdrop } from "../../components/Backdrop";
+import { BrandLockup } from "../../components/BrandLockup";
 import { Captions } from "../../components/Captions";
 import { LayerIcon } from "../../components/LayerIcon";
 import { LayerStack } from "../../components/LayerStack";
@@ -65,7 +66,7 @@ const CAPTION_DEMO = [
   },
 ];
 
-export const REEL_DURATION = PANEL * 7;
+export const REEL_DURATION = PANEL * 8;
 
 export const ComponentReel: React.FC = () => {
   return (
@@ -75,7 +76,7 @@ export const ComponentReel: React.FC = () => {
           <TitleCard
             eyebrow="Video 1"
             title="Hardware, Software & AI"
-            subtitle="Learning Software, Computer, & AI Engineering"
+            subtitle="Computing... one bit at a time"
           />
         </Panel>
       </Sequence>
@@ -136,6 +137,12 @@ export const ComponentReel: React.FC = () => {
       <Sequence from={PANEL * 6} durationInFrames={PANEL} name="Captions">
         <Panel index={7} name="Captions">
           <Captions lines={CAPTION_DEMO} />
+        </Panel>
+      </Sequence>
+
+      <Sequence from={PANEL * 7} durationInFrames={PANEL} name="BrandLockup">
+        <Panel index={8} name="BrandLockup">
+          <BrandLockup size={300} />
         </Panel>
       </Sequence>
     </>

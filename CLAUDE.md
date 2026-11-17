@@ -39,7 +39,7 @@ src/
   Root.tsx            registers every video as a <Composition>
   theme.ts            colors, spacing, springs, helpers
   fonts.ts            font loading
-  components/         shared components (TitleCard, LayerIcon, VennDiagram, LayerStack, PhoneMock, ReasonCard, Captions, Backdrop)
+  components/         shared components (TitleCard, BrandLockup, LayerIcon, VennDiagram, LayerStack, PhoneMock, ReasonCard, Captions, Backdrop)
                       animate.ts holds the shared popIn / fadeUp / slideIn / typedLength helpers
   videos/<videoN>/    SceneN.tsx files + the main <VideoN /> composition
   videos/dev/         ComponentReel: every shared component on one timeline. Dev tool, never uploaded.
