@@ -12,7 +12,7 @@ import { fonts } from "../../fonts";
 import { colors, sec, spacing } from "../../theme";
 
 // Scene 5: Outro (0:50 to 1:00). See docs/video1-script.md.
-// A question for the viewer, then the subscribe prompt, then the name.
+// First person: why I like all three, the name, then the subscribe prompt.
 // TODO: optional next-video teaser once the next topic is decided.
 export const Scene5Outro: React.FC = () => {
   const frame = useCurrentFrame();
@@ -42,8 +42,8 @@ export const Scene5Outro: React.FC = () => {
             translate: `0 ${question.translateY}px`,
           }}
         >
-          What would we build with{" "}
-          <span style={{ color: colors.engineering }}>all three?</span>
+          I love building with{" "}
+          <span style={{ color: colors.engineering }}>all three.</span>
         </div>
         <div
           style={{
@@ -58,7 +58,7 @@ export const Scene5Outro: React.FC = () => {
             scale: `${button.scale}`,
           }}
         >
-          Subscribe to learn with us
+          Follow my journey: Subscribe
         </div>
       </AbsoluteFill>
       <Sequence from={sec(6)} layout="none" name="Name">

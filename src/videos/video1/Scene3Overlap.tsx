@@ -34,16 +34,20 @@ const STATEMENTS: Word[][] = [
     { ...HW, text: "hardware." },
   ],
   [
-    { ...HW, text: "Hardware" },
-    { text: " is built for " },
-    { ...AI, text: "AI." },
+    { text: "Since " },
+    AI,
+    { text: " is also " },
+    SW,
+    { text: ", it runs on " },
+    { ...HW, text: "hardware." },
   ],
 ];
 
-const Statement: React.FC<{ words: Word[]; last?: boolean }> = ({
-  words,
-  last,
-}) => {
+const Statement: React.FC<{
+  words: Word[];
+  last?: boolean;
+  fontSize?: number;
+}> = ({ words, last, fontSize = 72 }) => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
   const enter = fadeUp(frame, fps, 0);
@@ -59,7 +63,7 @@ const Statement: React.FC<{ words: Word[]; last?: boolean }> = ({
       style={{
         fontFamily: fonts.heading,
         fontWeight: 700,
-        fontSize: 84,
+        fontSize,
         lineHeight: 1.15,
         color: colors.white,
         opacity: enter.opacity * exit,
@@ -107,14 +111,20 @@ export const Scene3Overlap: React.FC = () => {
             <Sequence
               from={CENTER_AT + sec(1.5)}
               layout="none"
-              name="Layers of one system"
+              name="That's engineering"
             >
               <AbsoluteFill style={{ justifyContent: "center" }}>
                 <Statement
                   last
+                  fontSize={64}
                   words={[
-                    { text: "Together: " },
-                    { text: "engineering.", color: layerColors.engineering },
+                    {
+                      text: "Put them together. Shape them to fit your needs. ",
+                    },
+                    {
+                      text: "That's engineering.",
+                      color: layerColors.engineering,
+                    },
                   ]}
                 />
               </AbsoluteFill>

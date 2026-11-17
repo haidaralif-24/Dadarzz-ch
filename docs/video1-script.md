@@ -3,14 +3,14 @@
 One idea: **AI is software, software runs on hardware, so they are layers of one system.**
 This video is the proof, because it uses all three.
 
-Voice: learning together, plain words, about 8 words on screen at a time.
+Voice: personal. The narrator speaks as "I" (a learning journey), plain words, about 8 words on screen at a time.
 The earlier 7-minute draft is kept in `docs/video1-script-long.md`.
 
 ## Working title
 
 **Hardware, Software & AI: One System (in 60 seconds)**
 
-## Script (about 90 spoken words)
+## Script (about 100 spoken words)
 
 ### Scene 1: Hook (0:00 to 0:05)
 
@@ -30,10 +30,11 @@ The earlier 7-minute draft is kept in `docs/video1-script-long.md`.
 
 > AI is software.
 > Software runs on hardware.
-> Hardware is built for AI.
-> Put them together, and that's engineering.
+> Since AI is also software, it runs on hardware.
+> Put them together, shape them with your own knowledge to fit what you need. That's engineering.
 
-[Venn diagram builds, one statement at a time beside it. Center lights up: "Engineering".]
+[Venn diagram builds, one statement at a time beside it. Center lights up: "Engineering".
+On screen, the last line is shortened: "Put them together. Shape them to fit your needs. That's engineering."]
 
 ### Scene 4: The proof (0:37 to 0:50)
 
@@ -43,9 +44,11 @@ The earlier 7-minute draft is kept in `docs/video1-script-long.md`.
 
 ### Scene 5: Outro (0:50 to 1:00)
 
-> So what would we build with all three? Let's find out together. Subscribe to learn with me.
+> That's why I like them. I love building things with all three.
+> [Dadarzz Engineering appears]
+> Follow my learning journey. Hit Subscribe.
 
-[Question, subscribe button. TODO: optional next-video teaser.]
+[On screen: "I love building with all three." then the name, then the button "Follow my journey: Subscribe". TODO: optional next-video teaser.]
 
 **Honesty note:** the proof scene says AI helped write the animation code. Before recording, list exactly what AI did (animations, script help, voice, etc.) and say only that.
 

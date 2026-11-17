@@ -5,7 +5,8 @@ Tagline: "Learning Software, Computer, & AI Engineering".
 One Remotion project for ALL videos. Each video is one `<Composition>` in `src/Root.tsx`.
 
 ## Channel voice (applies to all on-screen text and narration notes)
-- "Learning together", not teaching from above. Use "we" and "let's".
+- "Learning together", not teaching from above. The narrator speaks as "I" (Dadarzz, a personal
+  learning journey) and uses "we" or "let's" only when inviting the viewer to learn alongside.
 - Practical and engineering-focused. Explain through real projects, not pure theory.
 - Plain words, no hype. Be accurate; if unsure, leave a `TODO` instead of inventing a fact.
 - Audience: general viewers and people learning SWE, Computer Engineering and AI Engineering.
