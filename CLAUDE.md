@@ -1,11 +1,11 @@
-# Dadarzz Engineering: Remotion project
+# Darz Bits: Remotion project
 
-Animations for the YouTube channel **Dadarzz Engineering**.
-Tagline: "Learning Software, Computer, & AI Engineering".
+Animations for the YouTube channel **Darz Bits** (formerly Dadarzz Engineering).
+Tagline: "Computing... one bit at a time" (shown as `> Computing... one bit at a time` with a blinking block cursor).
 One Remotion project for ALL videos. Each video is one `<Composition>` in `src/Root.tsx`.
 
 ## Channel voice (applies to all on-screen text and narration notes)
-- "Learning together", not teaching from above. The narrator speaks as "I" (Dadarzz, a personal
+- "Learning together", not teaching from above. The narrator speaks as "I" (Darz, a personal
   learning journey) and uses "we" or "let's" only when inviting the viewer to learn alongside.
 - Practical and engineering-focused. Explain through real projects, not pure theory.
 - Plain words, no hype. Be accurate; if unsure, leave a `TODO` instead of inventing a fact.
@@ -14,19 +14,22 @@ One Remotion project for ALL videos. Each video is one `<Composition>` in `src/R
 ## Brand (source of truth: `src/theme.ts` and `src/fonts.ts`)
 - ALWAYS import colors, spacing and springs from `src/theme.ts` and fonts from `src/fonts.ts`.
   Never hardcode hex values or font names in components.
-- Palette: navy background `#0A1A2A`, brand orange `#E66F09`, white text, muted blue-grey `#9FB4C9`.
-- Fonts: Space Grotesk (headings, wordmark), JetBrains Mono (tagline, labels, code).
-- Logo: orange "D" mark on navy. Wordmark = "Dadarzz" in white + "Engineering" in orange,
-  tagline underneath in muted mono. Keep clear space around it. Do not recolor or distort it.
+- Palette: near-black charcoal background (`#18181C`, vignette to `#0C0C0E`), brand gold `#FFC93C`,
+  accent orange `#F28C28`, white text, muted grey `#9B9BA2`.
+- Fonts: JetBrains Mono for everything (wordmark, headings, tagline, labels, code). Wordmark is uppercase.
+- Logo: pixel-art half "D" filled with binary digits, gold and orange, on charcoal. Wordmark = "DARZ" in white
+  + "BITS" in gold, tagline underneath in muted mono after a `>` prompt, with a gold block cursor.
+  Keep clear space around it. Do not recolor, distort or re-draw it: use `public/brand/logo-mark.png`.
+- Look: retro terminal. Faint scanlines, a dark vignette and dim binary strings in the corners (see `Backdrop`).
 - Layer colors are fixed meanings, use them the same way in every video:
   - Hardware = teal (`colors.hardware`)
   - Software = blue (`colors.software`)
   - AI = violet (`colors.ai`)
-  - Where the three combine, or when saying "Engineering" = brand orange (`colors.engineering`)
+  - Where the three combine, or when saying "Engineering" = brand gold (`colors.engineering`)
 
 ## Video specs
 - 1920x1080, 30 fps. Use `video` and `sec()` from `src/theme.ts`.
-- Dark navy background on every scene. One idea on screen at a time.
+- Dark charcoal background on every scene. One idea on screen at a time.
 - Body text at least 48px at 1080p. Keep a 96px safe margin (`spacing.safe`).
 - Entrances should be short (about 20 frames or less). Use `spring()` and `interpolate()`. Do not over-animate.
 

@@ -1,4 +1,4 @@
-Put the brand assets here and reference them with staticFile("brand/<file>"):
+Brand assets for Darz Bits. Reference them with staticFile("brand/<file>"):
 
-- logo-mark.png    (the orange "D" on navy)
-- logo-banner.png  (wordmark + tagline banner)
+- logo-mark.png    (pixel-art half "D" with binary digits, on charcoal)
+- logo-banner.png  (DARZ BITS wordmark + "> Computing... one bit at a time" banner)

@@ -45,10 +45,10 @@ On screen, the last line is shortened: "Put them together. Shape them to fit you
 ### Scene 5: Outro (0:50 to 1:00)
 
 > That's why I like them. I love building things with all three.
-> [Dadarzz Engineering appears]
+> [Darz Bits appears]
 > Follow my learning journey. Hit Subscribe.
 
-[On screen: "I love building with all three." then the name, then the button "Follow my journey: Subscribe". TODO: optional next-video teaser.]
+[On screen: "I love building with all three." then the Darz Bits logo, then the button "Follow my journey: Subscribe". TODO: optional next-video teaser.]
 
 **Honesty note:** the proof scene says AI helped write the animation code. Before recording, list exactly what AI did (animations, script help, voice, etc.) and say only that.
 
