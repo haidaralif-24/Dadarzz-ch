@@ -11,3 +11,7 @@ export const SCENE_FRAMES = {
   why: sec(60), // Scene 6, 5:30 to 6:30
   outro: sec(30), // Scene 7, 6:30 to 7:00
 } as const;
+
+// Scenes built so far. Add each new scene's length here as it is sequenced
+// in Video1.tsx. (Final target: the sum of every entry in SCENE_FRAMES.)
+export const VIDEO1_FRAMES = SCENE_FRAMES.hook + SCENE_FRAMES.intro;

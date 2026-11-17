@@ -3,7 +3,7 @@ import { Composition } from "remotion";
 import { video } from "./theme";
 import { ComponentReel, REEL_DURATION } from "./videos/dev/ComponentReel";
 import { Video1 } from "./videos/video1/Video1";
-import { SCENE_FRAMES } from "./videos/video1/timing";
+import { VIDEO1_FRAMES } from "./videos/video1/timing";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -11,7 +11,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="Video1"
         component={Video1}
-        durationInFrames={SCENE_FRAMES.hook}
+        durationInFrames={VIDEO1_FRAMES}
         fps={30}
         width={1920}
         height={1080}
