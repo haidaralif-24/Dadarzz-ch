@@ -14,4 +14,5 @@ export const SCENE_FRAMES = {
 
 // Scenes built so far. Add each new scene's length here as it is sequenced
 // in Video1.tsx. (Final target: the sum of every entry in SCENE_FRAMES.)
-export const VIDEO1_FRAMES = SCENE_FRAMES.hook + SCENE_FRAMES.intro;
+export const VIDEO1_FRAMES =
+  SCENE_FRAMES.hook + SCENE_FRAMES.intro + SCENE_FRAMES.definitions;

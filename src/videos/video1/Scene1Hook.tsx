@@ -9,7 +9,14 @@ import {
 import { Backdrop } from "../../components/Backdrop";
 import { LayerIcon } from "../../components/LayerIcon";
 import { fonts } from "../../fonts";
-import { Layer, colors, layerColors, sec, springs, withAlpha } from "../../theme";
+import {
+  Layer,
+  colors,
+  layerColors,
+  sec,
+  springs,
+  withAlpha,
+} from "../../theme";
 
 // Scene 1: Hook (0:00 to 0:20). See docs/video1-script.md.
 // Beats (provisional, retime to the voiceover):
@@ -31,9 +38,24 @@ type Item = {
 };
 
 const ITEMS: Item[] = [
-  { layer: "hardware", popAt: sec(3), from: { x: -520, y: -150 }, to: { x: -ROW_GAP, y: -70 } },
-  { layer: "software", popAt: sec(4), from: { x: 460, y: 90 }, to: { x: 0, y: -70 } },
-  { layer: "ai", popAt: sec(5), from: { x: -60, y: 230 }, to: { x: ROW_GAP, y: -70 } },
+  {
+    layer: "hardware",
+    popAt: sec(3),
+    from: { x: -520, y: -150 },
+    to: { x: -ROW_GAP, y: -70 },
+  },
+  {
+    layer: "software",
+    popAt: sec(4),
+    from: { x: 460, y: 90 },
+    to: { x: 0, y: -70 },
+  },
+  {
+    layer: "ai",
+    popAt: sec(5),
+    from: { x: -60, y: 230 },
+    to: { x: ROW_GAP, y: -70 },
+  },
 ];
 
 const MERGE_AT = sec(8);
