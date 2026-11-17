@@ -5,6 +5,8 @@ import { Scene2Intro } from "./Scene2Intro";
 import { Scene3Definitions } from "./Scene3Definitions";
 import { Scene4Overlap } from "./Scene4Overlap";
 import { Scene5Proof } from "./Scene5Proof";
+import { Scene6Why } from "./Scene6Why";
+import { Scene7Outro } from "./Scene7Outro";
 import { SCENE_FRAMES } from "./timing";
 
 // Main composition for Video 1. Scenes are added one at a time from
@@ -30,6 +32,12 @@ export const Video1: React.FC = () => {
       </Series.Sequence>
       <Series.Sequence durationInFrames={SCENE_FRAMES.proof} name="5 Proof">
         <Scene5Proof />
+      </Series.Sequence>
+      <Series.Sequence durationInFrames={SCENE_FRAMES.why} name="6 Why">
+        <Scene6Why />
+      </Series.Sequence>
+      <Series.Sequence durationInFrames={SCENE_FRAMES.outro} name="7 Outro">
+        <Scene7Outro />
       </Series.Sequence>
     </Series>
   );
