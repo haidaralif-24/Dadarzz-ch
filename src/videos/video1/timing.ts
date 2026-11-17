@@ -13,7 +13,11 @@ export const SCENE_FRAMES = {
 } as const;
 
 // Total length of Video 1: the sum of every scene above.
-export const VIDEO1_FRAMES = Object.values(SCENE_FRAMES).reduce(
-  (a, b) => a + b,
-  0,
-);
+export const VIDEO1_FRAMES =
+  SCENE_FRAMES.hook +
+  SCENE_FRAMES.intro +
+  SCENE_FRAMES.definitions +
+  SCENE_FRAMES.overlap +
+  SCENE_FRAMES.proof +
+  SCENE_FRAMES.why +
+  SCENE_FRAMES.outro;
