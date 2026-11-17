@@ -64,7 +64,11 @@ export const ComponentReel: React.FC = () => {
     <>
       <Sequence from={PANEL * 0} durationInFrames={PANEL} name="TitleCard">
         <Panel index={1} name="TitleCard">
-          <TitleCard showMark secondary="Engineering" />
+          <TitleCard
+            eyebrow="Video 1"
+            title="Hardware, Software & AI"
+            subtitle="Learning Software, Computer, & AI Engineering"
+          />
         </Panel>
       </Sequence>
 

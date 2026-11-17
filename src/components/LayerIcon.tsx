@@ -1,112 +1,137 @@
 import React from "react";
-import { useCurrentFrame, useVideoConfig } from "remotion";
-import { colors } from "../theme";
-import { popIn } from "./animate";
+import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
+import { fonts } from "../fonts";
+import { Layer, layerColors, spacing, springs, withAlpha, colors } from "../theme";
 
-export type IconLayer = "hardware" | "software" | "ai";
-
-// The three layer colors never change meaning. See CLAUDE.md.
-export const iconColor: Record<IconLayer, string> = {
-  hardware: colors.hardware,
-  software: colors.software,
-  ai: colors.ai,
-};
-
-// Pin positions for the chip: three per side, symmetric around the centre.
-const PINS = [36, 50, 64];
-
-const ChipShape: React.FC<{ color: string }> = ({ color }) => (
-  <>
-    <rect x={26} y={26} width={48} height={48} rx={9} />
-    <rect x={40} y={40} width={20} height={20} rx={3} fill={color} stroke="none" />
-    {PINS.map((p) => (
-      <g key={p}>
-        <line x1={p} y1={14} x2={p} y2={26} />
-        <line x1={p} y1={74} x2={p} y2={86} />
-        <line x1={14} y1={p} x2={26} y2={p} />
-        <line x1={74} y1={p} x2={86} y2={p} />
-      </g>
-    ))}
-  </>
-);
-
-const CodeShape: React.FC<{ color: string }> = ({ color }) => (
-  <>
-    <rect x={14} y={20} width={72} height={60} rx={8} />
-    <line x1={14} y1={38} x2={86} y2={38} strokeOpacity={0.55} />
-    <circle cx={25} cy={29} r={3.2} fill={color} stroke="none" />
-    <circle cx={36} cy={29} r={3.2} fill={color} stroke="none" opacity={0.6} />
-    <circle cx={47} cy={29} r={3.2} fill={color} stroke="none" opacity={0.35} />
-    <line x1={26} y1={52} x2={60} y2={52} />
-    <line x1={26} y1={64} x2={48} y2={64} strokeOpacity={0.7} />
-    <line x1={26} y1={76} x2={38} y2={76} strokeOpacity={0.45} />
-  </>
-);
-
-const AiShape: React.FC<{ color: string }> = ({ color }) => (
-  <>
-    <path
-      d="M50 12 C52.5 32 68 47.5 88 50 C68 52.5 52.5 68 50 88 C47.5 68 32 52.5 12 50 C32 47.5 47.5 32 50 12 Z"
-      fill={color}
-      stroke="none"
-    />
-    <circle cx={80} cy={20} r={3.6} fill={color} stroke="none" opacity={0.85} />
-    <circle cx={90} cy={34} r={2.4} fill={color} stroke="none" opacity={0.6} />
-    <circle cx={70} cy={11} r={2} fill={color} stroke="none" opacity={0.45} />
-  </>
-);
-
-type LayerIconProps = {
-  layer: IconLayer;
+type Props = {
+  layer: Layer;
+  /** Tile size in px (the label sits below). */
   size?: number;
+  /** Show the layer name under the icon. */
+  showLabel?: boolean;
+  /** Label text. Defaults to the layer name. */
+  label?: string;
+  /** Frame (inside the parent Sequence) when the pop-in starts. */
   delay?: number;
-  // Set false when the parent already animates the icon in.
-  animate?: boolean;
-  style?: React.CSSProperties;
 };
 
-export const LayerIcon: React.FC<LayerIconProps> = ({
+const defaultLabels: Record<Layer, string> = {
+  hardware: "Hardware",
+  software: "Software",
+  ai: "AI",
+  engineering: "Engineering",
+};
+
+// Simple line glyphs on a 64x64 grid, drawn with currentColor.
+const Glyph: React.FC<{ layer: Layer }> = ({ layer }) => {
+  const common = {
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 4,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
+  switch (layer) {
+    case "hardware":
+      return (
+        <g {...common}>
+          <rect x="16" y="16" width="32" height="32" rx="4" />
+          <rect x="26" y="26" width="12" height="12" rx="2" />
+          <path d="M24 6v10M32 6v10M40 6v10M24 48v10M32 48v10M40 48v10M6 24h10M6 32h10M6 40h10M48 24h10M48 32h10M48 40h10" />
+        </g>
+      );
+    case "software":
+      return (
+        <g {...common}>
+          <path d="M22 18 8 32l14 14M42 18l14 14-14 14M36 12 28 52" />
+        </g>
+      );
+    case "ai":
+      return (
+        <g {...common}>
+          <circle cx="12" cy="18" r="5" />
+          <circle cx="12" cy="46" r="5" />
+          <circle cx="32" cy="32" r="6" />
+          <circle cx="52" cy="18" r="5" />
+          <circle cx="52" cy="46" r="5" />
+          <path d="M16.5 20.5 26.5 29.5M16.5 43.5 26.5 34.5M37.5 29.5 47.5 20.5M37.5 34.5 47.5 43.5" />
+        </g>
+      );
+    case "engineering":
+      return (
+        <g {...common}>
+          <circle cx="32" cy="32" r="9" />
+          <path d="M32 8v8M32 48v8M8 32h8M48 32h8M15 15l6 6M43 43l6 6M49 15l-6 6M21 43l-6 6" />
+        </g>
+      );
+  }
+};
+
+export const LayerIcon: React.FC<Props> = ({
   layer,
   size = 160,
+  showLabel = true,
+  label,
   delay = 0,
-  animate = true,
-  style,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const p = animate ? popIn(frame, fps, delay) : { scale: 1, opacity: 1 };
-  const color = iconColor[layer];
+  const color = layerColors[layer];
+
+  const pop = spring({
+    frame: frame - delay,
+    fps,
+    config: springs.pop,
+    durationInFrames: 20,
+  });
 
   return (
     <div
       style={{
-        width: size,
-        height: size,
-        flexShrink: 0,
-        transform: `scale(${p.scale})`,
-        opacity: p.opacity,
-        ...style,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: spacing.gap / 2,
+        scale: interpolate(pop, [0, 1], [0.6, 1]),
+        opacity: interpolate(pop, [0, 1], [0, 1], {
+          extrapolateRight: "clamp",
+        }),
       }}
     >
-      <svg
-        viewBox="0 0 100 100"
-        width={size}
-        height={size}
-        fill="none"
-        stroke={color}
-        strokeWidth={5}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        style={{ display: "block" }}
+      <div
+        style={{
+          width: size,
+          height: size,
+          borderRadius: spacing.radius,
+          backgroundColor: withAlpha(color, 0.15),
+          border: `3px solid ${color}`,
+          color,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
-        {layer === "hardware" ? (
-          <ChipShape color={color} />
-        ) : layer === "software" ? (
-          <CodeShape color={color} />
-        ) : (
-          <AiShape color={color} />
-        )}
-      </svg>
+        <svg
+          width={size * 0.6}
+          height={size * 0.6}
+          viewBox="0 0 64 64"
+          overflow="visible"
+        >
+          <Glyph layer={layer} />
+        </svg>
+      </div>
+      {showLabel ? (
+        <div
+          style={{
+            fontFamily: fonts.mono,
+            fontWeight: 500,
+            fontSize: 48,
+            color: colors.white,
+          }}
+        >
+          {label ?? defaultLabels[layer]}
+        </div>
+      ) : null}
     </div>
   );
 };

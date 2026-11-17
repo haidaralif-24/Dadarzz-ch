@@ -27,6 +27,10 @@ export const layerColors = {
 
 export type Layer = keyof typeof layerColors;
 
+// The three layers that carry their own colour and icon. "Engineering" is what
+// you get when all three combine, so it is not one of them.
+export type TriLayer = Exclude<Layer, "engineering">;
+
 export const video = {
   width: 1920,
   height: 1080,

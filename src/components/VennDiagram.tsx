@@ -1,27 +1,26 @@
 import React, { useId } from "react";
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
-import { colors, withAlpha } from "../theme";
+import { colors, layerColors, TriLayer, withAlpha } from "../theme";
 import { fonts } from "../fonts";
-import { iconColor, IconLayer } from "./LayerIcon";
 import { popIn } from "./animate";
 
 // Geometry lives in a 1000x1000 box and is scaled by `size`.
 // Hardware top-left, Software top-right, AI below: the centroid is inside all three.
 const RADIUS = 280;
-const CENTRES: Record<IconLayer, { x: number; y: number }> = {
+const CENTRES: Record<TriLayer, { x: number; y: number }> = {
   hardware: { x: 349, y: 418 },
   software: { x: 651, y: 418 },
   ai: { x: 500, y: 679 },
 };
-const LABEL_POS: Record<IconLayer, { left: string; top: string }> = {
+const LABEL_POS: Record<TriLayer, { left: string; top: string }> = {
   hardware: { left: "34.9%", top: "22.8%" },
   software: { left: "65.1%", top: "22.8%" },
   ai: { left: "50%", top: "86.9%" },
 };
 
-const ORDER: IconLayer[] = ["hardware", "software", "ai"];
+const ORDER: TriLayer[] = ["hardware", "software", "ai"];
 
-const DEFAULT_LABELS: Record<IconLayer, string> = {
+const DEFAULT_LABELS: Record<TriLayer, string> = {
   hardware: "Hardware",
   software: "Software",
   ai: "AI",
@@ -30,7 +29,7 @@ const DEFAULT_LABELS: Record<IconLayer, string> = {
 type VennDiagramProps = {
   delay?: number;
   size?: number;
-  labels?: Partial<Record<IconLayer, string>>;
+  labels?: Partial<Record<TriLayer, string>>;
   labelSize?: number;
   // The glowing centre: where all three meet, that's "Engineering".
   showCenter?: boolean;
@@ -82,9 +81,9 @@ export const VennDiagram: React.FC<VennDiagramProps> = ({
             >
               <circle
                 r={RADIUS}
-                fill={iconColor[layer]}
+                fill={layerColors[layer]}
                 fillOpacity={0.16}
-                stroke={iconColor[layer]}
+                stroke={layerColors[layer]}
                 strokeOpacity={0.75}
                 strokeWidth={3}
               />
@@ -117,7 +116,7 @@ export const VennDiagram: React.FC<VennDiagramProps> = ({
               fontSize: labelSize,
               letterSpacing: "0.14em",
               textTransform: "uppercase",
-              color: iconColor[layer],
+              color: layerColors[layer],
               whiteSpace: "nowrap",
             }}
           >

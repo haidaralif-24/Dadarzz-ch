@@ -1,11 +1,11 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig } from "remotion";
-import { withAlpha } from "../theme";
+import { layerColors, TriLayer, withAlpha } from "../theme";
 import { fonts } from "../fonts";
-import { iconColor, IconLayer, LayerIcon } from "./LayerIcon";
+import { LayerIcon } from "./LayerIcon";
 import { slideIn } from "./animate";
 
-export type StackLayer = IconLayer;
+export type StackLayer = TriLayer;
 
 const DEFAULT_ORDER: StackLayer[] = ["ai", "software", "hardware"];
 
@@ -45,7 +45,7 @@ export const LayerStack: React.FC<LayerStackProps> = ({
       {order.map((layer, i) => {
         const rowDelay = delay + i * stagger;
         const s = slideIn(frame, fps, rowDelay, -48);
-        const color = iconColor[layer];
+        const color = layerColors[layer];
         const label = labels && labels[layer] ? labels[layer] : DEFAULT_LABELS[layer];
 
         return (
@@ -66,7 +66,12 @@ export const LayerStack: React.FC<LayerStackProps> = ({
             }}
           >
             {showIcons ? (
-              <LayerIcon layer={layer} size={Math.round(rowHeight * 0.46)} animate={false} />
+              <LayerIcon
+                layer={layer}
+                size={Math.round(rowHeight * 0.46)}
+                showLabel={false}
+                delay={rowDelay}
+              />
             ) : null}
             <span
               style={{
