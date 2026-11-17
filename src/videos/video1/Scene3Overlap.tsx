@@ -87,7 +87,7 @@ export const Scene3Overlap: React.FC = () => {
         }}
       >
         <div style={{ flexShrink: 0 }}>
-          <VennDiagram size={800} delay={sec(0.3)} centerDelay={CENTER_AT} />
+          <VennDiagram size={700} delay={sec(0.3)} centerDelay={CENTER_AT} />
         </div>
         <div style={{ position: "relative", flex: 1, height: 400 }}>
           <AbsoluteFill style={{ justifyContent: "center" }}>

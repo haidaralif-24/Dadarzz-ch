@@ -60,7 +60,12 @@ export const VennDiagram: React.FC<VennDiagramProps> = ({
 
   return (
     <div style={{ position: "relative", width: size, height: size }}>
-      <svg viewBox="0 0 1000 1000" width={size} height={size} style={{ display: "block" }}>
+      <svg
+        viewBox="0 0 1000 1000"
+        width={size}
+        height={size}
+        style={{ display: "block" }}
+      >
         <defs>
           <radialGradient id={gradientId}>
             <stop offset="0%" stopColor={withAlpha(colors.brand, 0.55)} />

@@ -16,6 +16,10 @@ type Props = {
   eyebrow?: string;
   /** Color of the accent bar. Defaults to brand orange. */
   accent?: string;
+  /** Small lockup in a corner instead of a full-screen card. */
+  compact?: boolean;
+  /** Corner for the compact lockup. */
+  corner?: "top-left" | "bottom-left";
 };
 
 export const TitleCard: React.FC<Props> = ({
@@ -23,6 +27,8 @@ export const TitleCard: React.FC<Props> = ({
   subtitle,
   eyebrow,
   accent = colors.brand,
+  compact = false,
+  corner = "top-left",
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -39,6 +45,59 @@ export const TitleCard: React.FC<Props> = ({
     config: springs.smooth,
     durationInFrames: 20,
   });
+
+  if (compact) {
+    const quick = spring({
+      frame,
+      fps,
+      config: springs.snappy,
+      durationInFrames: 12,
+    });
+    return (
+      <AbsoluteFill
+        style={{
+          padding: spacing.safe,
+          justifyContent: corner === "top-left" ? "flex-start" : "flex-end",
+          alignItems: "flex-start",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: spacing.gap / 4,
+            borderLeft: `6px solid ${accent}`,
+            paddingLeft: spacing.gap / 2,
+            opacity: quick,
+            translate: `${interpolate(quick, [0, 1], [-24, 0])}px 0`,
+          }}
+        >
+          <div
+            style={{
+              fontFamily: fonts.heading,
+              fontWeight: 700,
+              fontSize: 48,
+              color: colors.white,
+            }}
+          >
+            {title}
+          </div>
+          {subtitle ? (
+            <div
+              style={{
+                fontFamily: fonts.mono,
+                fontWeight: 400,
+                fontSize: 28,
+                color: colors.muted,
+              }}
+            >
+              {subtitle}
+            </div>
+          ) : null}
+        </div>
+      </AbsoluteFill>
+    );
+  }
 
   return (
     <AbsoluteFill

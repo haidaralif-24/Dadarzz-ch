@@ -53,8 +53,16 @@ const GlowPhone: React.FC = () => {
 };
 
 const CAPTION_DEMO = [
-  { text: "Hardware is the physical stuff: the chip, the screen, the battery.", from: 0, to: 60 },
-  { text: "Software is the instructions. It tells the hardware what to do.", from: 60, to: 120 },
+  {
+    text: "Hardware is the physical stuff: the chip, the screen, the battery.",
+    from: 0,
+    to: 60,
+  },
+  {
+    text: "Software is the instructions. It tells the hardware what to do.",
+    from: 60,
+    to: 120,
+  },
 ];
 
 export const REEL_DURATION = PANEL * 7;
@@ -103,9 +111,24 @@ export const ComponentReel: React.FC = () => {
       <Sequence from={PANEL * 5} durationInFrames={PANEL} name="ReasonCard">
         <Panel index={6} name="ReasonCard">
           <div style={{ display: "flex", gap: 32, alignItems: "stretch" }}>
-            <ReasonCard index={1} title="You understand the world around you" delay={0} width={480} />
-            <ReasonCard index={2} title="You can build complete things" delay={12} width={480} />
-            <ReasonCard index={3} title="The lines are blurring" delay={24} width={480} />
+            <ReasonCard
+              index={1}
+              title="You understand the world around you"
+              delay={0}
+              width={480}
+            />
+            <ReasonCard
+              index={2}
+              title="You can build complete things"
+              delay={12}
+              width={480}
+            />
+            <ReasonCard
+              index={3}
+              title="The lines are blurring"
+              delay={24}
+              width={480}
+            />
           </div>
         </Panel>
       </Sequence>

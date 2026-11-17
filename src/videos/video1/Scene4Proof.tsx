@@ -64,7 +64,7 @@ export const Scene4Proof: React.FC = () => {
         style={{
           justifyContent: "flex-end",
           alignItems: "center",
-          paddingBottom: spacing.safe,
+          paddingBottom: 200,
         }}
       >
         <div

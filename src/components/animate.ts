@@ -15,16 +15,38 @@ export const popIn = (frame: number, fps: number, delay = 0, from = 0.84) => {
 };
 
 // Rise into place: no bounce, settles fast. Returns the offset in px.
-export const fadeUp = (frame: number, fps: number, delay = 0, distance = 28) => {
+export const fadeUp = (
+  frame: number,
+  fps: number,
+  delay = 0,
+  distance = 28,
+) => {
   const local = Math.max(0, frame - delay);
-  const p = spring({ frame: local, fps, config: springs.smooth, from: 0, to: 1 });
+  const p = spring({
+    frame: local,
+    fps,
+    config: springs.smooth,
+    from: 0,
+    to: 1,
+  });
   return { opacity: p, translateY: (1 - p) * distance };
 };
 
 // Slide in horizontally. Positive distance comes from the right.
-export const slideIn = (frame: number, fps: number, delay = 0, distance = 56) => {
+export const slideIn = (
+  frame: number,
+  fps: number,
+  delay = 0,
+  distance = 56,
+) => {
   const local = Math.max(0, frame - delay);
-  const p = spring({ frame: local, fps, config: springs.smooth, from: 0, to: 1 });
+  const p = spring({
+    frame: local,
+    fps,
+    config: springs.smooth,
+    from: 0,
+    to: 1,
+  });
   return { opacity: p, translateX: (1 - p) * distance };
 };
 

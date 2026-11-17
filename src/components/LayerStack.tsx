@@ -46,7 +46,8 @@ export const LayerStack: React.FC<LayerStackProps> = ({
         const rowDelay = delay + i * stagger;
         const s = slideIn(frame, fps, rowDelay, -48);
         const color = layerColors[layer];
-        const label = labels && labels[layer] ? labels[layer] : DEFAULT_LABELS[layer];
+        const label =
+          labels && labels[layer] ? labels[layer] : DEFAULT_LABELS[layer];
 
         return (
           <div

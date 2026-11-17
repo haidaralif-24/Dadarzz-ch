@@ -8,6 +8,8 @@ export const Backdrop: React.FC<{ children?: React.ReactNode }> = ({
   children,
 }) => {
   return (
-    <AbsoluteFill style={{ backgroundColor: colors.bg }}>{children}</AbsoluteFill>
+    <AbsoluteFill style={{ backgroundColor: colors.bg }}>
+      {children}
+    </AbsoluteFill>
   );
 };

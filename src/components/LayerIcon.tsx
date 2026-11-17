@@ -1,7 +1,14 @@
 import React from "react";
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { fonts } from "../fonts";
-import { Layer, layerColors, spacing, springs, withAlpha, colors } from "../theme";
+import {
+  Layer,
+  layerColors,
+  spacing,
+  springs,
+  withAlpha,
+  colors,
+} from "../theme";
 
 type Props = {
   layer: Layer;

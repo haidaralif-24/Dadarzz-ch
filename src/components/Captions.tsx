@@ -5,6 +5,8 @@ import { fonts } from "../fonts";
 
 export type CaptionLine = {
   text: string;
+  // Optional: color individual words (e.g. by layer). Overrides `text` when set.
+  segments?: { text: string; color?: string }[];
   // Local frames of the sequence this <Captions /> sits in.
   from: number;
   to: number;
@@ -15,6 +17,7 @@ type CaptionsProps = {
   bottom?: number;
   maxWidth?: number;
   fadeFrames?: number;
+  size?: number;
 };
 
 // Subtitle bar synced to the voiceover. Timing comes from the real audio:
@@ -23,7 +26,8 @@ export const Captions: React.FC<CaptionsProps> = ({
   lines,
   bottom = 64,
   maxWidth = 1520,
-  fadeFrames = 6,
+  fadeFrames = 4,
+  size = 56,
 }) => {
   const frame = useCurrentFrame();
 
@@ -69,14 +73,20 @@ export const Captions: React.FC<CaptionsProps> = ({
           style={{
             fontFamily: fonts.heading,
             fontWeight: 500,
-            fontSize: 48,
+            fontSize: size,
             lineHeight: 1.3,
             color: colors.white,
             textAlign: "center",
             whiteSpace: "pre-line",
           }}
         >
-          {active.text}
+          {active.segments
+            ? active.segments.map((seg, i) => (
+                <span key={i} style={{ color: seg.color ?? colors.white }}>
+                  {seg.text}
+                </span>
+              ))
+            : active.text}
         </div>
       </div>
     </AbsoluteFill>

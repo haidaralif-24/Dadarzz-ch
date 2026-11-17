@@ -1,7 +1,13 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
+import {
+  AbsoluteFill,
+  Sequence,
+  useCurrentFrame,
+  useVideoConfig,
+} from "remotion";
 import { fadeUp, popIn } from "../../components/animate";
 import { Backdrop } from "../../components/Backdrop";
+import { TitleCard } from "../../components/TitleCard";
 import { fonts } from "../../fonts";
 import { colors, sec, spacing } from "../../theme";
 
@@ -13,7 +19,6 @@ export const Scene5Outro: React.FC = () => {
   const { fps } = useVideoConfig();
   const question = fadeUp(frame, fps, 0);
   const button = popIn(frame, fps, sec(4), 0.8);
-  const name = fadeUp(frame, fps, sec(6));
 
   return (
     <Backdrop>
@@ -55,19 +60,15 @@ export const Scene5Outro: React.FC = () => {
         >
           Subscribe to learn with us
         </div>
-        <div
-          style={{
-            fontFamily: fonts.mono,
-            fontWeight: 400,
-            fontSize: 48,
-            color: colors.muted,
-            opacity: name.opacity,
-            translate: `0 ${name.translateY}px`,
-          }}
-        >
-          Dadarzz Engineering
-        </div>
       </AbsoluteFill>
+      <Sequence from={sec(6)} layout="none" name="Name">
+        <TitleCard
+          compact
+          corner="top-left"
+          title="Dadarzz Engineering"
+          subtitle="Learning Software, Computer, & AI Engineering"
+        />
+      </Sequence>
     </Backdrop>
   );
 };
