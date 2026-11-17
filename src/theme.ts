@@ -1,21 +1,23 @@
-// Dadarzz Engineering brand theme.
+// Darz Bits brand theme.
 // Colors were sampled from the official logo and banner.
 // Import from here. Never hardcode hex values in components.
 
 export const colors = {
   // Brand (from logo + banner)
-  bg: "#0A1A2A", // deep navy background
-  bgRaised: "#142434", // cards, panels, code windows
-  brand: "#E66F09", // brand orange: the "D", the word "Engineering"
+  bg: "#18181C", // charcoal background (banner centre)
+  bgDeep: "#0C0C0E", // vignette at the screen edges
+  bgRaised: "#232328", // cards, panels, code windows
+  brand: "#FFC93C", // brand gold: "BITS", the cursor, the pixel "D" highlight
+  accent: "#F28C28", // orange from the pixel "D" frame
   white: "#FFFFFF", // main text
-  muted: "#9FB4C9", // tagline / secondary text
+  muted: "#9B9BA2", // tagline / secondary text
 
   // The three layers (used consistently in every video)
   hardware: "#2DD4A7", // teal
   software: "#3DA5F4", // blue
   ai: "#A78BFA", // violet
-  // Where all three meet, use the brand orange: that's "Engineering".
-  engineering: "#E66F09",
+  // Where all three meet, use the brand gold: that's "Engineering".
+  engineering: "#FFC93C",
 } as const;
 
 export const layerColors = {
