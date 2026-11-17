@@ -12,17 +12,17 @@ import { fonts } from "../../fonts";
 import { colors, sec, spacing, withAlpha } from "../../theme";
 
 // Scene 7: Outro (6:30 to 7:00). See docs/video1-script.md.
-//   0 to 12s   name and tagline return
-//   12s onward subscribe prompt, then the teaser for the next video
+//   0 to 4s   name and tagline return
+//   4s onward subscribe prompt, then the teaser for the next video
 // TODO: set the next video's topic. The teaser stays hidden while it is empty.
 const NEXT_TOPIC = "";
-const SPLIT = sec(12);
+const SPLIT = sec(4);
 
 const Subscribe: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const button = popIn(frame, fps, 0, 0.8);
-  const next = fadeUp(frame, fps, sec(8));
+  const next = fadeUp(frame, fps, sec(3));
 
   return (
     <Backdrop>

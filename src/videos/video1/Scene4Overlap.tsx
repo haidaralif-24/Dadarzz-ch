@@ -16,9 +16,9 @@ import { colors, layerColors, sec, spacing } from "../../theme";
 // The Venn diagram builds first, then one statement at a time appears beside
 // it. The centre lights up with "Engineering" at the end.
 // Timings are provisional; retime to the voiceover.
-const STATEMENT_LEN = sec(20);
-const FIRST_AT = sec(16);
-const CENTER_AT = sec(100);
+const STATEMENT_LEN = sec(6);
+const FIRST_AT = sec(5);
+const CENTER_AT = sec(29);
 
 type Word = { text: string; color?: string };
 
@@ -106,7 +106,7 @@ export const Scene4Overlap: React.FC = () => {
               </Sequence>
             ))}
             <Sequence
-              from={CENTER_AT + sec(3)}
+              from={CENTER_AT + sec(2)}
               layout="none"
               name="Layers of one system"
             >

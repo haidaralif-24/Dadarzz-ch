@@ -8,8 +8,8 @@ import { colors, sec, spacing } from "../../theme";
 
 // Scene 6: Why learn all three (5:30 to 6:30). See docs/video1-script.md.
 // Three cards slide in on the beats "one, two, three". Provisional timing.
-const CARD_AT = [sec(8), sec(20), sec(32)];
-const CLOSING_AT = sec(46);
+const CARD_AT = [sec(3), sec(7), sec(11)];
+const CLOSING_AT = sec(14.5);
 
 export const Scene6Why: React.FC = () => {
   const frame = useCurrentFrame();

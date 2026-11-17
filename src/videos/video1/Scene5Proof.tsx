@@ -16,10 +16,10 @@ import { colors, layerColors, sec, spacing } from "../../theme";
 // A device stands in for the viewer's own screen. The stack builds line by
 // line on the spoken beats: software (animations are code), AI (generated the
 // code), hardware (it plays on your device). Provisional timing.
-const STACK_AT = sec(14);
-const STACK_STAGGER = sec(22);
+const STACK_AT = sec(3);
+const STACK_STAGGER = sec(4);
 const HARDWARE_AT = STACK_AT + STACK_STAGGER * 2;
-const FINAL_AT = sec(85);
+const FINAL_AT = sec(14.5);
 
 export const Scene5Proof: React.FC = () => {
   const frame = useCurrentFrame();
@@ -43,7 +43,7 @@ export const Scene5Proof: React.FC = () => {
         }}
       >
         <PhoneMock
-          delay={sec(2)}
+          delay={sec(0.5)}
           width={400}
           glow={glow}
           glowColor={layerColors.hardware}

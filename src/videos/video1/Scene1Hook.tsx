@@ -18,13 +18,13 @@ import {
   withAlpha,
 } from "../../theme";
 
-// Scene 1: Hook (0:00 to 0:20). See docs/video1-script.md.
+// Scene 1: Hook (about 10s). See docs/video1-script.md.
 // Beats (provisional, retime to the voiceover):
-//   3.0s "hardware"  -> chip pops in
-//   4.0s "software"  -> code window pops in
-//   5.0s "AI"        -> AI sparkle pops in
-//   8.0s "all working together" -> the three slide into one glowing row
-//   14s  "Let's figure it out."
+//   1.5s "hardware"  -> chip pops in
+//   2.3s "software"  -> code window pops in
+//   3.1s "AI"        -> AI sparkle pops in
+//   5.0s "all working together" -> the three slide into one glowing row
+//   7.5s "Let's figure it out."
 const ICON = 200;
 const ROW_GAP = 440;
 
@@ -40,26 +40,26 @@ type Item = {
 const ITEMS: Item[] = [
   {
     layer: "hardware",
-    popAt: sec(3),
+    popAt: sec(1.5),
     from: { x: -520, y: -150 },
     to: { x: -ROW_GAP, y: -70 },
   },
   {
     layer: "software",
-    popAt: sec(4),
+    popAt: sec(2.3),
     from: { x: 460, y: 90 },
     to: { x: 0, y: -70 },
   },
   {
     layer: "ai",
-    popAt: sec(5),
+    popAt: sec(3.1),
     from: { x: -60, y: 230 },
     to: { x: ROW_GAP, y: -70 },
   },
 ];
 
-const MERGE_AT = sec(8);
-const TEXT_AT = sec(14);
+const MERGE_AT = sec(5);
+const TEXT_AT = sec(7.5);
 
 export const Scene1Hook: React.FC = () => {
   const frame = useCurrentFrame();

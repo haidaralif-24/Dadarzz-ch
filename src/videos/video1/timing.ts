@@ -1,15 +1,16 @@
 import { sec } from "../../theme";
 
-// Provisional scene lengths from docs/video1-script.md (7:00 total).
+// Provisional scene lengths. Target: 2:00 total (the full script is ~7:00,
+// so the voiceover must be trimmed to match). Same order as the script.
 // TODO: replace with real frames once the voiceover is recorded and timed.
 export const SCENE_FRAMES = {
-  hook: sec(20), // Scene 1, 0:00 to 0:20
-  intro: sec(30), // Scene 2, 0:20 to 0:50
-  definitions: sec(50), // Scene 3, 0:50 to 1:40
-  overlap: sec(120), // Scene 4, 1:40 to 3:40
-  proof: sec(110), // Scene 5, 3:40 to 5:30
-  why: sec(60), // Scene 6, 5:30 to 6:30
-  outro: sec(30), // Scene 7, 6:30 to 7:00
+  hook: sec(10), // Scene 1
+  intro: sec(8), // Scene 2
+  definitions: sec(21), // Scene 3
+  overlap: sec(35), // Scene 4
+  proof: sec(18), // Scene 5
+  why: sec(18), // Scene 6
+  outro: sec(10), // Scene 7
 } as const;
 
 // Total length of Video 1: the sum of every scene above.

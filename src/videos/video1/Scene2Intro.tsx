@@ -12,9 +12,9 @@ import { fonts } from "../../fonts";
 import { colors, layerColors, sec, spacing } from "../../theme";
 
 // Scene 2: Intro (0:20 to 0:50). See docs/video1-script.md.
-//   0 to 14s   title card: name + tagline
-//   14s onward "They're one system": the three layer colors as one line
-const SPLIT = sec(14);
+//   0 to 4.5s   title card: name + tagline
+//   4.5s onward "They're one system": the three layer colors as one line
+const SPLIT = sec(4.5);
 
 const OneSystem: React.FC = () => {
   const frame = useCurrentFrame();

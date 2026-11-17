@@ -10,11 +10,11 @@ import {
 import { fadeUp, popIn, typedLength } from "../../components/animate";
 import { Backdrop } from "../../components/Backdrop";
 import { fonts } from "../../fonts";
+import { SCENE_FRAMES } from "./timing";
 import {
   Layer,
   colors,
   layerColors,
-  sec,
   spacing,
   springs,
   withAlpha,
@@ -22,7 +22,7 @@ import {
 
 // Scene 3: The three, in one sentence each (0:50 to 1:40).
 // Three panels in turn, one idea at a time. See docs/video1-script.md.
-export const PANEL_FRAMES = sec(50) / 3; // provisional; retime to the voiceover
+export const PANEL_FRAMES = SCENE_FRAMES.definitions / 3; // provisional; retime to the voiceover
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const VISUAL = 640;
@@ -338,7 +338,11 @@ export const Scene3Definitions: React.FC = () => {
           visual={<CodeVisual />}
         />
       </Sequence>
-      <Sequence from={len * 2} durationInFrames={sec(50) - len * 2} name="AI">
+      <Sequence
+        from={len * 2}
+        durationInFrames={SCENE_FRAMES.definitions - len * 2}
+        name="AI"
+      >
         <Panel
           layer="ai"
           label="AI"
