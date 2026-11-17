@@ -3,6 +3,7 @@ import { Series } from "remotion";
 import { Scene1Hook } from "./Scene1Hook";
 import { Scene2Intro } from "./Scene2Intro";
 import { Scene3Definitions } from "./Scene3Definitions";
+import { Scene4Overlap } from "./Scene4Overlap";
 import { SCENE_FRAMES } from "./timing";
 
 // Main composition for Video 1. Scenes are added one at a time from
@@ -22,6 +23,9 @@ export const Video1: React.FC = () => {
         name="3 Definitions"
       >
         <Scene3Definitions />
+      </Series.Sequence>
+      <Series.Sequence durationInFrames={SCENE_FRAMES.overlap} name="4 Overlap">
+        <Scene4Overlap />
       </Series.Sequence>
     </Series>
   );
