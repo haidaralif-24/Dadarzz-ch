@@ -18,4 +18,5 @@ export const VIDEO1_FRAMES =
   SCENE_FRAMES.hook +
   SCENE_FRAMES.intro +
   SCENE_FRAMES.definitions +
-  SCENE_FRAMES.overlap;
+  SCENE_FRAMES.overlap +
+  SCENE_FRAMES.proof;
