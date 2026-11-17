@@ -13,9 +13,9 @@ export const colors = {
   muted: "#B4B4BB", // tagline / secondary text
 
   // The three layers (used consistently in every video)
-  hardware: "#2DD4A7", // teal
-  software: "#3DA5F4", // blue
-  ai: "#A78BFA", // violet
+  hardware: "#4DB89A", // aged teal
+  software: "#5E94D4", // dusty blue
+  ai: "#9C86D0", // dusty violet
   // Where all three meet, use the brand gold: that's "Engineering".
   engineering: "#FFC93C",
 } as const;
@@ -24,6 +24,7 @@ export const colors = {
 // Tune these three numbers to make the picture dimmer or brighter.
 export const crt = {
   saturate: 0.82, // 1 = unchanged, lower = more washed out
+  sepia: 0.22, // warm phosphor tint: 0 = none, higher = more amber/brown
   brightness: 0.88, // 1 = unchanged, lower = dimmer
   scanlineAlpha: 0.24, // darkness of the horizontal scanlines (banner is about 0.22)
 } as const;

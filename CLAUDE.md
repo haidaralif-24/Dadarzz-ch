@@ -14,13 +14,13 @@ One Remotion project for ALL videos. Each video is one `<Composition>` in `src/R
 ## Brand (source of truth: `src/theme.ts` and `src/fonts.ts`)
 - ALWAYS import colors, spacing and springs from `src/theme.ts` and fonts from `src/fonts.ts`.
   Never hardcode hex values or font names in components.
-- Palette: near-black charcoal background (`#18181C`, vignette to `#0C0C0E`), brand gold `#FFC93C`,
+- Palette (layer colors are aged/dusty on purpose; see `theme.ts`): near-black charcoal background (`#18181C`, vignette to `#0C0C0E`), brand gold `#FFC93C`,
   accent orange `#F28C28`, white text, muted grey `#9B9BA2`.
 - Fonts: JetBrains Mono for everything (wordmark, headings, tagline, labels, code). Wordmark is uppercase.
 - Logo: pixel-art half "D" filled with binary digits, gold and orange, on charcoal. Wordmark = "DARZ" in white
   + "BITS" in gold, tagline underneath in muted mono after a `>` prompt, with a gold block cursor.
   Keep clear space around it. Do not recolor, distort or re-draw it: use `public/brand/logo-mark.png`.
-- Look: old CRT PC, like the banner. Dimmed, slightly washed-out colors and scanlines over EVERYTHING (see
+- Look: old CRT PC, like the banner. Dimmed, washed-out, warm-tinted colors and scanlines over EVERYTHING (see
   `CrtScreen`, tuned by `crt` in `theme.ts`), plus a dark vignette and dim binary strings (see `Backdrop`).
   Wrap each video in `<CrtScreen>`. Do not use pure white or fully saturated colors outside the theme tokens.
 - Layer colors are fixed meanings, use them the same way in every video:

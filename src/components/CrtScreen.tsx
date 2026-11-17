@@ -3,7 +3,7 @@ import { AbsoluteFill } from "remotion";
 import { colors, crt, withAlpha } from "../theme";
 
 // Makes everything inside look like it is shown on an old CRT monitor, like the
-// channel banner: slightly dimmed and washed out colors, horizontal scanlines
+// channel banner: dimmed, washed-out colors with a warm phosphor tint, horizontal scanlines
 // across ALL content (including captions), and a soft dark vignette.
 // Wrap a whole video in this once. All static, so every frame stays deterministic.
 export const CrtScreen: React.FC<{ children?: React.ReactNode }> = ({
@@ -14,7 +14,7 @@ export const CrtScreen: React.FC<{ children?: React.ReactNode }> = ({
     <AbsoluteFill style={{ backgroundColor: colors.bgDeep }}>
       <AbsoluteFill
         style={{
-          filter: `saturate(${crt.saturate}) brightness(${crt.brightness})`,
+          filter: `sepia(${crt.sepia}) saturate(${crt.saturate}) brightness(${crt.brightness})`,
         }}
       >
         {children}
