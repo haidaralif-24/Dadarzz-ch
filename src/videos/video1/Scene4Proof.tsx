@@ -9,6 +9,7 @@ import { fadeUp } from "../../components/animate";
 import { Backdrop } from "../../components/Backdrop";
 import { LayerStack } from "../../components/LayerStack";
 import { PhoneMock } from "../../components/PhoneMock";
+import { PhoneScreen } from "./PhoneScreen";
 import { fonts } from "../../fonts";
 import { colors, layerColors, sec, spacing } from "../../theme";
 
@@ -47,7 +48,13 @@ export const Scene4Proof: React.FC = () => {
           width={400}
           glow={glow}
           glowColor={layerColors.hardware}
-        />
+        >
+          <PhoneScreen
+            softwareAt={STACK_AT}
+            aiAt={STACK_AT + STACK_STAGGER}
+            hardwareAt={HARDWARE_AT}
+          />
+        </PhoneMock>
         <LayerStack
           order={["software", "ai", "hardware"]}
           labels={{
