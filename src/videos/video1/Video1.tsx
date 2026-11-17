@@ -1,35 +1,17 @@
 import React from "react";
-import { AbsoluteFill, Sequence } from "remotion";
-import { TitleCard } from "../../components/TitleCard";
-import { LayerIcon } from "../../components/LayerIcon";
-import { colors, sec, spacing } from "../../theme";
+import { Series } from "remotion";
+import { Scene1Hook } from "./Scene1Hook";
+import { SCENE_FRAMES } from "./timing";
 
-// Placeholder: real scenes are built one at a time from docs/video1-script.md.
-// TODO: replace once the final script is pasted into docs/video1-script.md.
+// Main composition for Video 1. Scenes are added one at a time from
+// docs/video1-script.md; each is its own <Series.Sequence> so it can be
+// edited and previewed separately.
 export const Video1: React.FC = () => {
   return (
-    <AbsoluteFill style={{ backgroundColor: colors.bg }}>
-      <Sequence durationInFrames={sec(3)} name="Title (placeholder)">
-        <TitleCard
-          eyebrow="Video 1"
-          title="Hardware, Software & AI"
-          subtitle="Placeholder: scenes coming soon"
-        />
-      </Sequence>
-      <Sequence from={sec(3)} durationInFrames={sec(3)} name="Layers (placeholder)">
-        <AbsoluteFill
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: spacing.safe,
-          }}
-        >
-          <LayerIcon layer="hardware" />
-          <LayerIcon layer="software" delay={6} />
-          <LayerIcon layer="ai" delay={12} />
-        </AbsoluteFill>
-      </Sequence>
-    </AbsoluteFill>
+    <Series>
+      <Series.Sequence durationInFrames={SCENE_FRAMES.hook} name="1 Hook">
+        <Scene1Hook />
+      </Series.Sequence>
+    </Series>
   );
 };
